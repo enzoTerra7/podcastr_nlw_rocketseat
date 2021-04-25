@@ -9,8 +9,9 @@ import ptBR from 'date-fns/locale/pt-BR';
 import { convertDurationToTimeString } from '../utils/convertDurationToTimeString';
 
 import styles from './home.module.scss';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import {PlayerContext} from '../contexts/PlayerContext'
+import { WidthContext } from '../contexts/WidthContext';
 
 type Episode = {
   id: string;
@@ -29,6 +30,8 @@ type HomeProps = {
 }
 
 export default function Home({latestEpisodes, allEpisodes} : HomeProps) {
+
+  const { isMobile } = useContext(WidthContext)
 
   const { handlePlayList } = useContext(PlayerContext);
 
@@ -60,7 +63,7 @@ export default function Home({latestEpisodes, allEpisodes} : HomeProps) {
                   <span>{ep.durationString}</span>
                 </div>
 
-                <button type="button" onClick={ () => handlePlayList(episodeList, index)}>
+                <button className={styles.playButton} type="button" onClick={ () => handlePlayList(episodeList, index)}>
                   <img src="/play-green.svg" alt="ouvir o podcast"/>
                 </button>
 
@@ -78,8 +81,8 @@ export default function Home({latestEpisodes, allEpisodes} : HomeProps) {
             <tr>
               <th></th>
               <th>Podcast</th>
-              <th>Integrantes</th>
-              <th>Data</th>
+              <th className={styles.notMobile}>Integrantes</th>
+              <th className={styles.notMobile}>Data</th>
               <th>Duração</th>
               <th></th>
             </tr>
@@ -98,8 +101,8 @@ export default function Home({latestEpisodes, allEpisodes} : HomeProps) {
                       <a>{ep.title}</a>
                     </Link>
                   </td>
-                  <td>{ep.members}</td>
-                  <td style={{ width: 100 }}>{ep.publishedAt}</td>
+                  <td className={styles.notMobile} >{ep.members}</td>
+                  <td className={styles.notMobile} style={{ width: 100 }}>{ep.publishedAt}</td>
                   <td>{ep.durationString}</td>
                   <td>
                     <button type="button">

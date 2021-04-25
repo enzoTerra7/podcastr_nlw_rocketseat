@@ -17,3 +17,18 @@
         text-transform: capitalize;
     }
 }
+
+@media screen and (max-width: 540px) {
+
+    .headerContainer{
+        justify-content: space-between;
+        width: 100%;
+        padding: 2rem 2rem;
+
+        p {
+            display: none;
+        }
+
+    }
+
+}

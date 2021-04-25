@@ -13,6 +13,25 @@
         display: flex;
         align-items: center;
         gap: 1rem;
+        justify-content: center;
+        width: 100%;
+
+        span{
+            margin-left: 12%;
+            opacity: 0;
+            display: none;
+
+            img{
+                width: .8rem;
+                transition: filter .2s;
+                
+                &:hover {
+                    filter: invert(0.65) sepia(1) saturate(5) hue-rotate(100deg);
+                    cursor: pointer;
+                    transition: filter .2s;
+                }
+            }
+        }
     }
 
     strong {
@@ -31,6 +50,19 @@
     }
 
 }
+
+
+.show{
+    opacity: 1;
+    display: block;
+}
+
+.hidden{
+    opacity: 0;
+    display: none;
+}
+
+
 .currentEpisode{
     text-align: center;
 
@@ -133,4 +165,32 @@
             opacity: .4;
         }
     }
+}
+
+@media screen and (max-width: 720px) {
+    .playerContainer{
+        width: 100%;
+        padding: 3rem;
+        
+        header{
+
+            span{
+                display: block;
+                opacity: 1;
+            }
+
+        }
+
+    }
+
+    .showPlayer{
+        position: fixed;
+        bottom: 1rem;
+        left: 1rem;
+        background-color: var(--purple-500);
+        font-size: 0;
+        padding: .05rem .12rem .12rem;
+        border-radius: 50%;
+    }
+
 }

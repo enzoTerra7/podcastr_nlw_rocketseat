@@ -135,6 +135,7 @@
                 width: 2.5rem;
                 height: 2.5rem;
                 border-radius: .5rem;
+                min-width: 2rem;
             }
             
             a{
@@ -151,7 +152,7 @@
             }
 
             button{
-                width: 2rem;
+                min-width: 2rem;
                 height: 2rem;
                 background-color: var(--white);
                 border: 1px solid var(--gray-100);
@@ -172,4 +173,35 @@
             }
         }
     }
+}
+
+@media screen and (max-width: 470px){
+
+    .allEpisodes {
+        td.notMobile{
+            display: none;
+        }
+        th.notMobile{
+            display: none;
+        }
+    }
+
+    .latestEpisodes{
+
+        li {
+            flex-direction: column;
+            min-width: 17.75rem;
+
+            .episodesDetails{
+                width: 95%;
+                margin: 0 auto;
+                padding: 2rem 1rem 0;
+            }
+
+            button.playButton{
+                display: block;
+            }
+        }
+    }
+
 }
